@@ -1,5 +1,5 @@
 <script>
-import ButtonLike from "./ButtonLike.vue";
+import ButtonLike from "./CardButtonLike.vue";
 export default {
   data() {
     return {

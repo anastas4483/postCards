@@ -1,11 +1,7 @@
-<template>
-  <div id="app">
-    <CardList :posts="posts" />
-  </div>
-</template>
-
 <script>
 import CardList from "./components/CardList.vue";
+import TheHeader from "./components/TheHeader.vue";
+import TheFooter from "./components/TheFooter.vue";
 
 export default {
   name: "App",
@@ -29,14 +25,18 @@ export default {
 
   components: {
     CardList,
+    TheHeader,
+    TheFooter,
   },
 };
 </script>
 
-<style>
-#app {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-</style>
+<template>
+  <div id="app">
+    <TheHeader />
+    <CardList :posts="posts" />
+    <TheFooter />
+  </div>
+</template>
+
+<style></style>
