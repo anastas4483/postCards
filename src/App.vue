@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <CardItem v-for="i of this.posts" :key="i.id" :post="i" />
+    <CardList :posts="posts" />
   </div>
 </template>
 
 <script>
-import CardItem from "./components/CardItem.vue";
+import CardList from "./components/CardList.vue";
 
 export default {
   name: "App",
@@ -28,7 +28,7 @@ export default {
   },
 
   components: {
-    CardItem,
+    CardList,
   },
 };
 </script>
