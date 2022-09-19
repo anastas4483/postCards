@@ -1,6 +1,6 @@
 <script>
 import CardList from "./components/CardList.vue";
-import TheHeader from "./components/TheHeader.vue";
+import TheHeader from "./components/Header/TheHeader.vue";
 import TheFooter from "./components/TheFooter.vue";
 
 export default {
@@ -39,4 +39,10 @@ export default {
   </div>
 </template>
 
-<style></style>
+<style>
+#app {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+</style>
