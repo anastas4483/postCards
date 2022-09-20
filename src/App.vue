@@ -1,5 +1,5 @@
 <script>
-import CardList from "./components/CardList.vue";
+import PostsList from "./components/PostsList.vue";
 import TheHeader from "./components/Header/TheHeader.vue";
 import TheFooter from "./components/TheFooter.vue";
 
@@ -24,7 +24,7 @@ export default {
   },
 
   components: {
-    CardList,
+    CardList: PostsList,
     TheHeader,
     TheFooter,
   },
