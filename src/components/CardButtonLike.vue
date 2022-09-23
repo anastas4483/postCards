@@ -1,11 +1,11 @@
 <script>
-import HeartEmptyIcon from "@/assets/svgs/HeartEmptyIcon.vue";
-import HeartFullIcon from "@/assets/svgs/heartFullIcon.vue";
+import HeartEmptyIcon from "@/assets/svgs/EmptyHeartIcon.vue"
+import HeartFullIcon from "@/assets/svgs/FullHeartIcon.vue"
 export default {
   props: ["onClickLike", "isLike"],
   computed: {},
   components: { HeartEmptyIcon, HeartFullIcon },
-};
+}
 </script>
 
 <template>

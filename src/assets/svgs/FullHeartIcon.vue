@@ -4,7 +4,7 @@ export default {
     width: { type: Number, required: false },
     height: { type: Number, required: false },
   },
-};
+}
 </script>
 <template>
   <!-- <?xml version="1.0" encoding="iso-8859-1"?> -->

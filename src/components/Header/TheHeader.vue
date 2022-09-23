@@ -1,9 +1,9 @@
 <script>
-import TheHeaderMenu from "./components/TheHeaderMenu.vue";
-import TheFavoriteList from "./components/TheFavoriteList.vue";
+import TheHeaderMenu from "./components/TheHeaderMenu.vue"
+import TheFavoriteList from "./components/TheFavoriteList.vue"
 export default {
   components: { TheHeaderMenu, TheFavoriteList },
-};
+}
 </script>
 
 <template>

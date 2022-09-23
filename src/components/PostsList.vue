@@ -1,11 +1,11 @@
 <script>
-import CardItem from "./CardItem.vue";
+import CardItem from "./CardItem.vue"
 export default {
   props: ["posts"],
   components: {
     CardItem,
   },
-};
+}
 </script>
 
 <template>

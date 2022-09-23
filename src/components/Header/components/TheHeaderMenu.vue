@@ -16,7 +16,6 @@ ul {
   gap: 15px;
   font-size: 18px;
   padding: 0;
-  font-family: sans-serif;
   align-items: center;
   color: #fff;
   justify-content: center;
