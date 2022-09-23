@@ -1,32 +1,40 @@
 <script>
-import FavoriteListIcon from "@/assets/svgs/FavoriteListIcon.vue";
+import FavoriteListIcon from "@/assets/svgs/FavoriteListIcon.vue"
+import TheFavoriteItem from "./TheFavoriteItem.vue"
 export default {
-  components: { FavoriteListIcon },
-  props: {
-    favoritePosts: Array,
-  },
+  components: { FavoriteListIcon, TheFavoriteItem },
   data() {
     return {
       isShow: false,
-    };
+    }
+  },
+  computed: {
+    favoritePosts() {
+      return this.$store.state.favoritePosts
+    },
   },
   methods: {
     onMouseEnter() {
-      this.isShow = true;
+      this.isShow = true
     },
     onMouseLeave() {
-      this.isShow = false;
+      this.isShow = false
     },
   },
-};
+}
 </script>
+
 <template>
   <div class="wrapper" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
     <span class="openListButton" :class="{ activeButton: isShow }">
       <FavoriteListIcon :width="30" :height="30" />
     </span>
     <div class="list" :class="{ show: isShow }">
-      <div v-if="isShow">sdfg</div>
+      <TheFavoriteItem
+        v-for="post in favoritePosts"
+        :key="post.id"
+        :post="post"
+      />
     </div>
   </div>
 </template>
@@ -37,7 +45,7 @@ export default {
 }
 .openListButton {
   position: absolute;
-  right: 17px;
+  right: 65px;
   top: 31px;
   cursor: pointer;
   transition: all ease 0.2s;
@@ -47,7 +55,7 @@ export default {
   padding: 5px;
   border-radius: 11px;
   background-color: #b74a4a;
-  right: 12px;
+  right: 60px;
   top: 22px;
   padding-bottom: 1px;
 }
@@ -63,5 +71,6 @@ export default {
   border-radius: 7px;
   backdrop-filter: blur(5px);
   box-shadow: 0px 0px 20px 3px #ffffff96;
+  overflow: hidden;
 }
 </style>

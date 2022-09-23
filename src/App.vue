@@ -1,30 +1,26 @@
-<script>
-import PostsList from "./components/PostsList.vue";
+<script lang="js">
+import { mapActions } from "vuex";
 import TheHeader from "./components/Header/TheHeader.vue";
+import PostsList from "./components/PostsList.vue";
 import TheFooter from "./components/TheFooter.vue";
 
 export default {
   name: "App",
-  data() {
-    return {
-      posts: [],
-    };
-  },
-  methods: {
-    async getPosts() {
-      const postsFetched = await fetch(
-        "https://jsonplaceholder.typicode.com/posts"
-      );
-      // postsFetched.then((response) => (this.posts = response));
-      postsFetched.json().then((response) => (this.posts = response));
-    },
-  },
+
+  methods: mapActions(['getPosts']),
+
   mounted() {
-    this.getPosts();
+    this.getPosts()
+  },
+
+  computed:{
+    posts(){
+      return this.$store.state.posts
+    }
   },
 
   components: {
-    CardList: PostsList,
+    PostsList,
     TheHeader,
     TheFooter,
   },
@@ -32,11 +28,9 @@ export default {
 </script>
 
 <template>
-  <div id="app">
-    <TheHeader />
-    <CardList :posts="posts" />
-    <TheFooter />
-  </div>
+  <TheHeader />
+  <PostsList :posts="posts" />
+  <TheFooter />
 </template>
 
 <style>
@@ -44,5 +38,11 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
 }
 </style>

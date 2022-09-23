@@ -1,10 +1,10 @@
 <script>
-import ButtonLike from "./CardButtonLike.vue";
+import ButtonLike from "./CardButtonLike.vue"
 export default {
   data() {
     return {
       isLike: false,
-    };
+    }
   },
   props: {
     post: Object,
@@ -15,10 +15,11 @@ export default {
   },
   methods: {
     onClickLike() {
-      this.isLike = !this.isLike;
+      this.isLike = !this.isLike
+      this.$store.commit("updateListPosts", this.post)
     },
   },
-};
+}
 </script>
 
 <template>
@@ -30,7 +31,7 @@ export default {
   </div>
 </template>
 
-<style>
+<style scoped>
 .card {
   display: flex;
   border: 2px inset #0eaabd;
@@ -45,7 +46,6 @@ export default {
   box-shadow: 4px 3px 0px #00222e42;
 }
 .title {
-  font-family: Arial, Helvetica, sans-serif;
   color: rgb(2, 87, 133);
   text-align: center;
   font-size: 25px;
@@ -67,5 +67,6 @@ export default {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin: 20px 5px;
 }
 </style>
