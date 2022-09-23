@@ -13,7 +13,10 @@ export default {
         {{ post.body }}
       </p>
     </div>
-    <button class="favoriteItem__removeBurron">
+    <button
+      class="favoriteItem__removeBurron"
+      @click="() => this.$store.commit('deleteFavoritePost', post.id)"
+    >
       <TrashbinIcon :width="20" :height="30" />
     </button>
   </div>
