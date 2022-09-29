@@ -4,6 +4,7 @@ export const store = createStore({
   state: {
     favoritePosts: {},
     posts: {},
+    isAddNewPost: false
   },
   mutations: {
     setIsLikeOfPost({ posts }, postId) {
@@ -17,13 +18,20 @@ export const store = createStore({
       delete favoritePosts[postId]
       posts[postId].isLike = false
     },
-    setPosts(state, posts) {
-      if (posts)
-        state.posts = posts.reduce((obj, post) => {
+    setPosts(state, fetchPosts) {
+      if (fetchPosts)
+       state.posts=fetchPosts.reduce((obj, post) => {
           obj[post?.id] = { ...post, isLike: false }
           return obj
         }, {})
     },
+    setNewPost({posts},post){
+      const id=Object.keys(posts).length + 1
+      posts[id]={...post, id}
+    },
+    setIsAddNewPost(state){
+      state.isAddNewPost=!state.isAddNewPost
+    }
   },
   actions: {
     async getPosts({ commit }) {
@@ -38,5 +46,16 @@ export const store = createStore({
       commit("setIsLikeOfPost", post.id)
       commit("setFavoritePosts", post)
     },
+   async addNewPost({commit}, newPost){
+      fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify(newPost),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => { commit('setNewPost', json) });
+    }
   },
 })
