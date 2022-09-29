@@ -23,10 +23,7 @@ export default {
     <h1 class="card__title">{{ post.title }}</h1>
 
     <p class="card__description">{{ post.body }}</p>
-    <ButtonLike
-      :onClickLike="() => this.updateFavoritePosts(post)"
-      :isLike="isLike"
-    />
+    <ButtonLike :onClickLike="() => this.updateFavoritePosts(post)" :isLike="isLike" />
   </div>
 </template>
 
@@ -43,7 +40,9 @@ export default {
   justify-content: center;
   align-items: center;
   box-shadow: 4px 3px 0px #00222e42;
+  max-height: 207px;
 }
+
 .card__title {
   color: rgb(2, 87, 133);
   text-align: center;
@@ -55,11 +54,13 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   min-height: 62px;
+  font-weight: bold;
 }
 
-.title::first-letter {
+.card__title::first-letter {
   text-transform: uppercase;
 }
+
 .card__description {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -67,5 +68,6 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 20px 5px;
+  font-size: 1rem;
 }
 </style>
