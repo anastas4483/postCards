@@ -1,6 +1,6 @@
 <script>
 import { mapActions } from "vuex"
-import ButtonLike from "./CardButtonLike.vue"
+import ButtonLike from "./ButtonLike.vue"
 export default {
   props: {
     post: Object,
@@ -20,9 +20,9 @@ export default {
 
 <template>
   <div class="card">
-    <h1 class="title">{{ post.title }}</h1>
+    <h1 class="card__title">{{ post.title }}</h1>
 
-    <p class="description">{{ post.body }}</p>
+    <p class="card__description">{{ post.body }}</p>
     <ButtonLike
       :onClickLike="() => this.updateFavoritePosts(post)"
       :isLike="isLike"
@@ -30,7 +30,7 @@ export default {
   </div>
 </template>
 
-<style scoped>
+<style>
 .card {
   display: flex;
   border: 2px inset #0eaabd;
@@ -44,7 +44,7 @@ export default {
   align-items: center;
   box-shadow: 4px 3px 0px #00222e42;
 }
-.title {
+.card__title {
   color: rgb(2, 87, 133);
   text-align: center;
   font-size: 25px;
@@ -60,7 +60,7 @@ export default {
 .title::first-letter {
   text-transform: uppercase;
 }
-.description {
+.card__description {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;

@@ -1,9 +1,9 @@
 <script>
-import TrashbinIcon from "@/assets/svgs/TrashbinIcon.vue"
+import TrashbinIcon from "@/assets/svgs/TrashbinIcon.vue";
 export default {
   props: ["post"],
   components: { TrashbinIcon },
-}
+};
 </script>
 <template>
   <div class="favoriteItem">
@@ -25,7 +25,7 @@ export default {
 <style scoped>
 .favoriteItem {
   width: 100%;
-  height: 100px;
+  height: 120px;
   border-bottom: 1px solid #ccc;
   background: #d6e6eb;
   padding: 10px 15px;
@@ -34,7 +34,9 @@ export default {
   align-items: center;
   justify-content: center;
   padding-right: 30px;
+  border-radius: 7px;
 }
+
 .favoriteItem__title {
   color: #2b4a4c;
   text-transform: capitalize;

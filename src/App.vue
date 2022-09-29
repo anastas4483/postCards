@@ -1,7 +1,7 @@
 <script lang="js">
 import { mapActions } from "vuex";
-import TheHeader from "./components/Header/TheHeader.vue";
-import PostsList from "./components/PostsList.vue";
+import TheHeader from "./components/header/TheHeader.vue";
+import PostsList from "./components/post/PostsList.vue";
 import TheFooter from "./components/TheFooter.vue";
 
 export default {

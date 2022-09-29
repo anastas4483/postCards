@@ -1,27 +1,27 @@
 <script>
-import FavoriteListIcon from "@/assets/svgs/FavoriteListIcon.vue"
-import TheFavoriteItem from "./TheFavoriteItem.vue"
+import FavoriteListIcon from "@/assets/svgs/FavoriteListIcon.vue";
+import TheFavoriteItem from "./TheFavoriteItem.vue";
 export default {
   components: { FavoriteListIcon, TheFavoriteItem },
   data() {
     return {
       isShow: false,
-    }
+    };
   },
   computed: {
     favoritePosts() {
-      return this.$store.state.favoritePosts
+      return this.$store.state.favoritePosts;
     },
   },
   methods: {
     onMouseEnter() {
-      this.isShow = true
+      this.isShow = true;
     },
     onMouseLeave() {
-      this.isShow = false
+      this.isShow = false;
     },
   },
-}
+};
 </script>
 
 <template>
@@ -30,12 +30,14 @@ export default {
       <FavoriteListIcon :width="30" :height="30" />
     </span>
     <div class="list" :class="{ show: isShow }">
+      <div class="list__wrapper">
       <TheFavoriteItem
         v-for="post in favoritePosts"
         :key="post.id"
         :post="post"
       />
     </div>
+  </div>
   </div>
 </template>
 
@@ -71,6 +73,12 @@ export default {
   border-radius: 7px;
   backdrop-filter: blur(5px);
   box-shadow: 0px 0px 20px 3px #ffffff96;
-  overflow: hidden;
+  overflow-y: scroll;
+}
+.list__wrapper{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 </style>
