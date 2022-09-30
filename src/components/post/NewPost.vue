@@ -1,8 +1,20 @@
 <script>
+import { mapState } from 'vuex';
+
 export default {
+  computed: mapState(['isAddNewPost']),
   methods: {
-    onSave() {
-      console.log(2345);
+    onSubmit(e) {
+      e.preventDefault()
+      const newPost = {
+        title: e.target.title.value,
+        body: e.target.description.value
+      }
+      this.$store.dispatch('addNewPost', newPost)
+      this.$store.commit('setIsAddNewPost')
+    },
+    onSetStateNewPost() {
+      this.$store.commit('setIsAddNewPost')
     }
   }
 };
@@ -10,20 +22,23 @@ export default {
 
 <template lang="">
   <div class="card freeSpace">
-  <div class=" card newCard">
-    <textarea class="card__title newItem" placeholder="Add title" rows="2" wrap="hard" cols="2"></textarea>
-    <textarea class="card__description newItem" placeholder="Add description" ></textarea>
+  <form class=" card newCard" @submit="onSubmit" v-if="isAddNewPost">
+    <textarea name="title" class="card__title newItem" placeholder="Add title" rows="2" wrap="hard" cols="2"></textarea>
+    <textarea name="description" class="card__description newItem" placeholder="Add description" ></textarea>
     <div class="actions">
-        <button @click="onSave" class="button bgGreen">Save</button>
-        <button class="button bgRed ">Discard</button>
+        <button type="submit" class="button bgGreen">Save</button>
+        <button class="button bgRed" @click="onSetStateNewPost">Discard</button>
     </div>
+  </form>
+  <div v-else class="placeholderNewItem" @click="onSetStateNewPost">
+    +
   </div>
 </div>
 </template>
 
 <style lang="css">
 .freeSpace {
-  background: none;
+  border-style: dashed;
   box-shadow: none;
 }
 
@@ -51,5 +66,25 @@ export default {
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+
+.placeholderNewItem {
+  width: 100%;
+  height: 100%;
+  font-size: 40px;
+  font-weight: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(95, 95, 95);
+  cursor: pointer;
+  transition: all ease 0.2s;
+  border-radius: 7px;
+
+}
+
+.placeholderNewItem:hover {
+  background-color: rgba(255, 255, 255, 0.391);
+  color: rgb(140, 140, 140);
 }
 </style>

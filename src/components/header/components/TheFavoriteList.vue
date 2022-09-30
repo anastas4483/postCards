@@ -31,13 +31,9 @@ export default {
     </span>
     <div class="list" :class="{ show: isShow }">
       <div class="list__wrapper">
-      <TheFavoriteItem
-        v-for="post in favoritePosts"
-        :key="post.id"
-        :post="post"
-      />
+        <TheFavoriteItem v-for="post in favoritePosts" :key="post.id" :post="post" />
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -45,6 +41,7 @@ export default {
 .show {
   height: 444px !important;
 }
+
 .openListButton {
   position: absolute;
   right: 65px;
@@ -74,8 +71,10 @@ export default {
   backdrop-filter: blur(5px);
   box-shadow: 0px 0px 20px 3px #ffffff96;
   overflow-y: scroll;
+  z-index: 500;
 }
-.list__wrapper{
+
+.list__wrapper {
   padding: 10px;
   display: flex;
   flex-direction: column;
